@@ -1,0 +1,13 @@
+networks:
+  default:
+    name: cs_backend
+    
+services:
+  mysql:
+    container_name: cs_backend_ms_sql_server 
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    ports:
+      - "1434:1433"
+    environment:
+      SA_PASSWORD: "Super_Secret_Password_123"
+      ACCEPT_EULA: "Y"

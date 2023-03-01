@@ -1,5 +1,7 @@
 using cs_todos_backend.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 
 namespace cs_todos_backend.Controllers;
 
@@ -11,20 +13,40 @@ public class MyTaskController : ControllerBase
     [HttpGet(Name = "GetTasks")]
     public List<MyTask> Get()
     {
-        List<MyTask> tasks = new List<MyTask>()
-        {
-            new MyTask{
-                id = 1,
-                Description = "first task",
-                Priority = 5
-            },
-            new MyTask{
-                id = 2,
-                Description = "second task",
-                Priority = 3
-            }   
-        };
+        SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+        builder.DataSource = "localhost,1434";
+        builder.UserID = "sa";
+        builder.Password = "Super_Secret_Password_123";
+        builder.InitialCatalog = "test_db";
+        builder.TrustServerCertificate = true;
         
-        return tasks;
+        List<MyTask> otherTasks = new List<MyTask>();
+
+        using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
+        {
+            Console.WriteLine("made it here without an error?");
+            connection.Open();
+            String sql = "Select * from dbo.tasks";
+            using (SqlCommand command = new SqlCommand(sql, connection))
+            {
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Console.WriteLine("{0} {1} {2}", reader.GetInt32(0),reader.GetString(1), reader.GetInt32(2));
+                        var task = new MyTask
+                        {
+                            id = reader.GetInt32(0),
+                            description = reader.GetString(1),
+                            priority = reader.GetInt32(2)
+                        };
+                        otherTasks.Add(task);
+                    }
+                }
+            }
+
+        }
+        
+        return otherTasks;
     }
 }
