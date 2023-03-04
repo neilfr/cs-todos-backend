@@ -18,4 +18,5 @@ public class MyDbContext : DbContext
         }
     }
     public DbSet<MyTask> MyTasks { get; set; }
+    public DbSet<Stage> Stages { get; set; }
 }
