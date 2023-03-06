@@ -30,34 +30,8 @@ public class MyTaskController : ControllerBase
         
         List<MyTask> otherTasks = new List<MyTask>();
 
-        otherTasks = _context.MyTasks.ToList();
+        otherTasks = _context.MyTasks.ToList(); 
 
-        // non ef
-       // using (SqlConnection connection = new SqlConnection(builder.ConnectionString)) 
-       //  {
-       //      Console.WriteLine("made it here without an error?");
-       //      connection.Open();
-       //      String sql = "Select * from dbo.tasks";
-       //      using (SqlCommand command = new SqlCommand(sql, connection))
-       //      {
-       //          using (SqlDataReader reader = command.ExecuteReader())
-       //          {
-       //              while (reader.Read())
-       //              {
-       //                  Console.WriteLine("{0} {1} {2}", reader.GetInt32(0),reader.GetString(1), reader.GetInt32(2));
-       //                  var task = new MyTask
-       //                  {
-       //                      id = reader.GetInt32(0),
-       //                      description = reader.GetString(1),
-       //                      priority = reader.GetInt32(2)
-       //                  };
-       //                  otherTasks.Add(task);
-       //              }
-       //          }
-       //      }
-
-       
-
-           return otherTasks;
+        return otherTasks;
     }
 }
