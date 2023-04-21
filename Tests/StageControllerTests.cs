@@ -1,7 +1,10 @@
+using System.Runtime.InteropServices.JavaScript;
 using cs_todos_backend.Contexts;
 using cs_todos_backend.Models;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Xunit;
 using Assert = NUnit.Framework.Assert;
 
@@ -21,7 +24,11 @@ public class StageControllerTests : IClassFixture<WebApplicationFactory<Program>
     {
         var client = _factory.CreateClient();
         var response = await client.GetAsync("/Stage");
+        var foo = await response.Content.ReadAsStringAsync();
+        var bar = JsonConvert.DeserializeObject<Stage[]>(foo);
         response.EnsureSuccessStatusCode();
+        Assert.AreEqual(bar.Length,5);
+        Assert.AreEqual(bar[0].Description, "To Do");
     }
     
     [Xunit.Theory]
