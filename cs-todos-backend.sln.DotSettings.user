@@ -5,5 +5,8 @@
     &lt;TestId&gt;NUnit3x::B8D3E845-2E1B-42F5-B87F-2E6B3F60D247::net7.0::Tests.Stuff.DoStuffTests.ShouldReturn8&lt;/TestId&gt;
     &lt;TestId&gt;NUnit3x::B8D3E845-2E1B-42F5-B87F-2E6B3F60D247::net7.0::Tests.StageControllerTests.ShouldReturnStages&lt;/TestId&gt;
     &lt;TestId&gt;xUnit::B8D3E845-2E1B-42F5-B87F-2E6B3F60D247::net7.0::Tests.StageControllerTests.ShouldReturnStages&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::B8D3E845-2E1B-42F5-B87F-2E6B3F60D247::net7.0::Tests.DoStuff2Tests.ShouldReturn9&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::B8D3E845-2E1B-42F5-B87F-2E6B3F60D247::net7.0::Tests.Stuff.DoStuff2Tests&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::B8D3E845-2E1B-42F5-B87F-2E6B3F60D247::net7.0::Tests.StageControllerTests.GetEndpointWorks&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

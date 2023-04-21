@@ -15,6 +15,14 @@ public class StageControllerTests : IClassFixture<WebApplicationFactory<Program>
     {
         _factory = factory;
     }
+
+    [Xunit.Fact]
+    public async Task GetEndpointWorks()
+    {
+        var client = _factory.CreateClient();
+        var response = await client.GetAsync("/Stage");
+        response.EnsureSuccessStatusCode();
+    }
     
     [Xunit.Theory]
     [InlineData("/Stage")]
